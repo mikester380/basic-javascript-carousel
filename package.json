@@ -1,0 +1,15 @@
+{
+  "name": "carousel",
+  "version": "1.0.0",
+  "description": "a basic carousel built with javascript",
+  "main": "index.js",
+  "author": "mikestaarrr",
+  "license": "MIT",
+  "scripts": {
+    "sass": "sass --watch styles/main.scss styles/styles.css"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "sass": "^1.57.1"
+  }
+}
