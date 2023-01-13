@@ -187,8 +187,11 @@ body {
   gap: 10px;
   padding: 0 10px;
   overflow-x: scroll;
-  scroll-padding: 10px;
   scroll-behavior: smooth;
+}
+.carousel__slides.snap {
+  scroll-snap-type: x mandatory;
+  scroll-padding: 10px;
 }
 .carousel__slides::-webkit-scrollbar {
   display: none;

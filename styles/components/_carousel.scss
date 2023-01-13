@@ -32,23 +32,18 @@
     }
   }
 
-  //   &__slider {
-  //     overflow-x: scroll;
-
-  //     &::-webkit-scrollbar {
-  //       display: none;
-  //     }
-  //   }
-
   &__slides {
     display: flex;
     gap: 10px;
     padding: 0 10px;
 
     overflow-x: scroll;
-    // scroll-snap-type: x mandatory;
-    scroll-padding: 10px;
     scroll-behavior: smooth;
+
+    &.snap {
+      scroll-snap-type: x mandatory;
+      scroll-padding: 10px;
+    }
 
     &::-webkit-scrollbar {
       display: none;

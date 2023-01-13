@@ -4,55 +4,43 @@ class Carousel {
     this.prevBtn = document.querySelector(prevBtn);
     this.nextBtn = document.querySelector(nextBtn);
 
-    this.numOfSlide = this.slides.children.length;
-    this.scrollPixel = 500;
-    this.scrollPosition = 0;
-    this.maxPosition = 1000000;
-    this.minPosition = 0;
+    this.numOfSlides = this.slides.children.length;
+    this.perScrollPixel = 500;
+    this.scrollMinPixel = 0;
+    this.scrollMaxPixel = 10000000;
     this.snapCount = 0;
-    this.maxSnapCount = this.numOfSlide - 1;
-    this.minSnapCount = 0;
 
     this.addEventListeners();
   }
 
   prevSlide() {
-    this.slides.style.scrollSnapType = "x mandatory";
+    this.slides.classList.add("snap");
 
-    [...this.slides.children].forEach((slide) => {
-      slide.style.scrollSnapAlign = "center";
-    });
-
-    if (this.snapCount === this.minSnapCount) {
-      this.scrollPosition = this.maxPosition;
-      this.slides.scrollLeft = this.scrollPosition;
-      this.scrollPosition = (this.numOfSlide - 1) * this.scrollPixel;
-      this.snapCount = this.maxSnapCount;
+    if (this.snapCount === 0) {
+      this.slides.scrollLeft = this.scrollMaxPixel;
+      this.snapCount = this.numOfSlides - 1;
       return;
     }
 
-    this.scrollPosition -= this.scrollPixel;
-    this.slides.scrollLeft = this.scrollPosition;
+    this.slides.scrollLeft -= this.scrollPixel;
     this.snapCount--;
+
+    this.slides.classList.remove("snap");
   }
 
   nextSlide() {
-    this.slides.style.scrollSnapType = "x mandatory";
+    this.slides.classList.add("snap");
 
-    [...this.slides.children].forEach((slide) => {
-      slide.style.scrollSnapAlign = "center";
-    });
-
-    if (this.snapCount === this.maxSnapCount) {
-      this.scrollPosition = this.minPosition;
-      this.slides.scrollLeft = this.scrollPosition;
-      this.snapCount = this.minSnapCount;
+    if (this.snapCount === this.numOfSlides - 1) {
+      this.slides.scrollLeft = this.scrollMinPixel;
+      this.snapCount = 0;
       return;
     }
 
-    this.scrollPosition += this.scrollPixel;
-    this.slides.scrollLeft += this.scrollPosition;
+    this.slides.scrollLeft += this.scrollPixel;
     this.snapCount++;
+
+    this.slides.classList.remove("snap");
   }
 
   addEventListeners() {
