@@ -22,7 +22,7 @@ class Carousel {
       return;
     }
 
-    this.slides.scrollLeft -= this.scrollPixel;
+    this.slides.scrollLeft -= this.perScrollPixel;
     this.snapCount--;
 
     this.slides.classList.remove("snap");
@@ -37,7 +37,7 @@ class Carousel {
       return;
     }
 
-    this.slides.scrollLeft += this.scrollPixel;
+    this.slides.scrollLeft += this.perScrollPixel;
     this.snapCount++;
 
     this.slides.classList.remove("snap");
